@@ -1,9 +1,9 @@
-struct peterson {
+struct Peterson {
     flag: [bool; 2],
     victim: i32,
 }
 
-static mut LOCK: peterson = peterson {
+static mut LOCK: Peterson = Peterson {
     flag: [false, false],
     victim: -1, // -1 means no one is victim
 };
@@ -31,9 +31,11 @@ fn main() {
         let id = i;
         let handle = thread::spawn(move || {
             lock(id);
+            // *** start critical section
             println!("Thread {id} start");
             thread::sleep(std::time::Duration::from_millis(100));
             println!("Thread {id} end");
+            // *** end critical section
             unlock(id);
         });
         handles.push(handle);
