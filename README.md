@@ -17,5 +17,5 @@ kind comment.
 ## Algorithms included
 Here lists the algorithms included in this project.
 
-- Peterson Algorithm
+- Peterson's Algorithm
 - (To be continue)
